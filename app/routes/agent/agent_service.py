@@ -63,12 +63,16 @@ class AgentService:
         return response_text
     
     def get_agents(self):
-
         agents = [
             {
                 "id": "text",
                 "name": "Agente de texto",
                 "description": "Permite realizar preguntas y mantener conversaciones."
+            },
+            {
+                "id": "vision",
+                "name": "Agente de visión",
+                "description": "Permite analizar imágenes y responder preguntas."
             }
         ]
 
