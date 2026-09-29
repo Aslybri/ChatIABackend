@@ -1,1 +1,1 @@
-from .vision_route import login_bp
+from .vision_route import vision_bp

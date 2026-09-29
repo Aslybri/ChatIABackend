@@ -56,3 +56,10 @@ class AgentController:
             return jsonify({
                 "error": "No se pudo generar la respuesta"
             }), 500
+    def get_agents_controller(self):
+
+        agents = self.agent_service.get_agents()
+
+        return jsonify({
+            "agents": agents
+        }), 200

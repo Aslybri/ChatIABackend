@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from app.conversation_memory import memory
 
 # Cargar las variables del archivo .env
 load_dotenv()
@@ -8,8 +9,8 @@ load_dotenv()
 
 class AgentService:
 
-    def __init__(self):
 
+    def __init__(self):
         api_key = os.getenv("OPENAI_API_KEY")
 
         if not api_key:
@@ -17,8 +18,7 @@ class AgentService:
 
         self.client = OpenAI(api_key=api_key)
 
-        # Memoria de las conversaciones
-        self.memory = {}
+        self.memory = memory
 
 
     def generate_text(self, prompt: str, conversation_id: str) -> str:
@@ -61,3 +61,15 @@ class AgentService:
 
         # 7. Devolver la respuesta
         return response_text
+    
+    def get_agents(self):
+
+        agents = [
+            {
+                "id": "text",
+                "name": "Agente de texto",
+                "description": "Permite realizar preguntas y mantener conversaciones."
+            }
+        ]
+
+        return agents
